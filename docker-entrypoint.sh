@@ -117,6 +117,7 @@ _verbose "Mounting bucket ${AWS_S3_BUCKET} onto ${AWS_S3_MOUNT}, owner: $UID:$GI
 su - $RUN_AS -c "s3fs $DEBUG_OPTS ${S3FS_ARGS} \
     -o passwd_file=${AWS_S3_AUTHFILE} \
     -o url=${AWS_S3_URL} \
+    -o umask=0007 \
     -o uid=$UID \
     -o gid=$GID \
     ${AWS_S3_BUCKET} ${AWS_S3_MOUNT}"
